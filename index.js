@@ -8,18 +8,19 @@ document.addEventListener('DOMContentLoaded', function () {
     let players = [];
     let roundNumber = 1;
 
-    function createPlayerInputField(playerNumber) {
+    function createPlayerInputField(playerNumber, playerName) {
         const container = document.createElement('div');
 
-        const playerName = document.createElement('span');
-        playerName.textContent = `Jogador ${playerNumber}: `;
+        const playerNameLabel = document.createElement('label');
+        playerNameLabel.textContent = `${playerName}: `;
 
         const input = document.createElement('input');
         input.setAttribute('type', 'number');
         input.setAttribute('placeholder', 'Pontos');
-        input.setAttribute('data-player', `player-${playerNumber}`); // Adiciona identificador único
+        input.setAttribute('data-player', `player-${playerNumber}`);
+        input.setAttribute('data-name', playerName); // Armazena o nome do jogador
 
-        container.appendChild(playerName);
+        container.appendChild(playerNameLabel);
         container.appendChild(input);
 
         return container;
@@ -70,19 +71,22 @@ document.addEventListener('DOMContentLoaded', function () {
         roundResultsDiv.innerHTML = `<p>Rodada ${roundNumber}:</p>`;
 
         players.forEach(player => {
-            const input = document.querySelector(`input[data-player="player-${player.name.split(' ')[1]}"]`);
+            const input = document.querySelector(`input[data-player="player-${players.indexOf(player) + 1}"][data-name="${player.name}"]`);
             const score = parseInt(input.value) || 0;
 
             player.points -= score;
 
             roundResultsDiv.innerHTML += `<p>${player.name} perdeu ${score} pontos. Pontuação atual: ${player.points}</p>`;
+
+
+            input.value = '';
         });
 
         roundNumber++;
         displayScoreTable();
         updateEliminationStatus();
 
-        // Check if only one player is remaining
+
         const remainingPlayers = players.filter(player => player.points >= 0);
         if (remainingPlayers.length === 1 && players.length > 1) {
             eliminationStatusDiv.textContent = `Parabéns! ${remainingPlayers[0].name} é o vencedor!`;
@@ -97,13 +101,13 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        // Create player input fields dynamically
+
         for (let i = 1; i <= playerCount; i++) {
-            const inputField = createPlayerInputField(i);
+            const playerName = prompt(`Nome do Jogador ${i}:`) || `Jogador ${i}`;
+            const inputField = createPlayerInputField(i, playerName);
             playersContainer.appendChild(inputField);
 
-            // Add player to the players array
-            const playerName = `Jogador ${i}`;
+
             players.push({
                 name: playerName,
                 points: 99,
