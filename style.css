@@ -11,8 +11,8 @@ body {
 
 #game-container {
     text-align: center;
-    width: 90%; /* Ajuste a largura conforme necessário */
-    max-width: 600px; /* Máximo de 600px para evitar que fique muito grande em telas maiores */
+    width: 90%; 
+    max-width: 600px;
     margin: auto;
     padding: 20px;
     background-color: #fff;
@@ -35,6 +35,10 @@ body {
 #elimination-status {
     font-weight: bold;
     color: red;
+}
+#next-round,
+#restart-game {
+    margin: 15px 15px 15px 15px;
 }
 
 table {
