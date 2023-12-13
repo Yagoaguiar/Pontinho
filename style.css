@@ -1,72 +1,94 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: black;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f7f7f7;
 }
 
 #game-container {
-    text-align: center;
-    width: 90%; 
-    max-width: 600px;
-    margin: auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 90%;
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-#players {
-    margin-bottom: 20px;
+#players input[type="text"] {
+  width: 50px;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f5f5f5;
+  color: #333;
 }
 
-#players div {
-    margin-bottom: 10px;
+#players input[type="text"]:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
 }
 
 #round-results {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
-#elimination-status {
-    font-weight: bold;
-    color: red;
-}
-#next-round,
-#restart-game {
-    margin: 15px 15px 15px 15px;
+.elimination-status {
+  font-weight: bold;
+  color: #e74c3c;
 }
 
+.button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+.button:disabled {
+  background-color: #95a5a6;
+  cursor: not-allowed;
+}
+
+.button:hover {
+  background-color: #2980b9;
+}
+
+.hide {
+  display: none;
+}
 table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
 }
 
-th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
 }
 
 th {
-    background-color: #f2f2f2;
+  background-color: #f2f2f2;
+}
+th:first-child {
+  border-top-left-radius: 8px;
 }
 
-input {
-    width: 100%;
-    margin-bottom: 10px; 
-    box-sizing: border-box; 
-}
-
-
-@media screen and (max-width: 600px) {
-    #game-container {
-        width: 100%; 
-        max-width: none;
-    }
+th:last-child {
+  border-top-right-radius: 8px;
 }
